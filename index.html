@@ -4,31 +4,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Name | Engineering & Design Portfolio</title>
+    
+    <!-- Loads the 3D Model Viewer Tool from Google -->
+    <script type="module" src="https://googleapis.com"></script>
+
     <style>
-        /* Modern Fonts & Styling */
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
             margin: 0;
             padding: 0;
             color: #333;
-            line-box: 1.6;
+            background-color: #fafafa;
         }
         header {
             background-color: #1a252f;
             color: white;
             text-align: center;
-            padding: 3rem 1rem;
+            padding: 4rem 1rem;
         }
         header h1 { margin: 0; font-size: 2.5rem; }
         header p { margin: 0.5rem 0 0; color: #3498db; font-weight: bold; }
         
         .container {
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
             padding: 2rem 1rem;
         }
+
+        /* Side-by-Side Layout for About Me & 3D Model */
+        .about-section {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin: 3rem 0;
+            flex-wrap: wrap;
+        }
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        /* 3D Model Container */
+        .model-container {
+            flex: 1;
+            min-width: 300px;
+            height: 400px;
+            background: radial-gradient(#ffffff, #eceff1);
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            overflow: hidden;
+        }
+        model-viewer {
+            width: 100%;
+            height: 100%;
+            outline: none;
+        }
         
-        /* Grid Layout for Projects */
+        /* Project Grid */
         .project-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -36,37 +68,19 @@
             margin-top: 2rem;
         }
         .project-card {
+            background: white;
             border: 1px solid #e0e0e0;
             border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 4px 6px rgba(0,0,0,0.05);
         }
-        .project-img {
-            background-color: #eceff1;
-            height: 180px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #78909c;
-            font-weight: bold;
-        }
         .project-info { padding: 1.5rem; }
-        .project-info h3 { margin-top: 0; color: #1a252f; }
-        .tag {
-            background-color: #e8f4fd;
-            color: #1d9bf0;
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            font-weight: bold;
-        }
-        
         footer {
             text-align: center;
-            padding: 2rem;
-            background-color: #f8f9fa;
-            margin-top: 3rem;
-            font-size: 0.9rem;
+            padding: 3rem;
+            background-color: #1a252f;
+            color: white;
+            margin-top: 4rem;
         }
     </style>
 </head>
@@ -78,38 +92,65 @@
     </header>
 
     <div class="container">
-        <h2>About Me</h2>
-        <p>Hi, I am an engineer focused on blending technical performance with elegant physical design. I specialize in CAD modeling, prototyping, and systems engineering. Explore my recent work below.</p>
+        
+        <!-- About Me Section with 3D Model -->
+        <div class="about-section">
+            <div class="about-text">
+                <h2>About Me</h2>
+                <p>Hi, I am an engineer focused on blending technical performance with elegant physical design. I specialize in CAD modeling, prototyping, and systems engineering.</p>
+                <p><strong>Interact with my design on the right!</strong> Scroll down the page to watch it rotate, or click and drag it to inspect my file layout.</p>
+            </div>
+            
+            <div class="model-container">
+                <!-- Change "my-robot-model.glb" to your exact filename -->
+                <model-viewer id="scroll-model" 
+                    src="my-robot-model.glb" 
+                    alt="A 3D model designed by me" 
+                    camera-controls 
+                    disable-zoom
+                    auto-rotate-delay="0"
+                    interaction-prompt="none">
+                </model-viewer>
+            </div>
+        </div>
 
         <h2>Featured Projects</h2>
         <div class="project-grid">
-            
-            <!-- Project 1 -->
             <div class="project-card">
-                <div class="project-img">[ Project Image Here ]</div>
                 <div class="project-info">
-                    <span class="tag">CAD / Robotics</span>
-                    <h3>Autonomous Rover Chassis</h3>
-                    <p>Designed a lightweight aluminum chassis optimized for stress distribution and internal electronics cooling.</p>
+                    <h3>Project Title One</h3>
+                    <p>Brief technical description of what you engineered, materials used, and problems solved.</p>
                 </div>
             </div>
-
-            <!-- Project 2 -->
             <div class="project-card">
-                <div class="project-img">[ Project Image Here ]</div>
                 <div class="project-info">
-                    <span class="tag">Design / 3D Printing</span>
-                    <h3>Ergonomic Hand Tools</h3>
-                    <p>Conducted user research to 3D print and test high-friction resin handles, reducing user strain by 20%.</p>
+                    <h3>Project Title Two</h3>
+                    <p>Brief technical description of what you engineered, materials used, and problems solved.</p>
                 </div>
             </div>
-
         </div>
+
     </div>
 
     <footer>
-        <p>Contact: email@domain.com | <a href="#">LinkedIn</a></p>
+        <p>Contact: email@domain.com</p>
     </footer>
+
+    <!-- Scroll Effect JavaScript Logic -->
+    <script>
+        const modelViewer = document.getElementById('scroll-model');
+        
+        window.addEventListener('scroll', () => {
+            // Calculates how far down the page you have scrolled
+            const scrollPercentage = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
+            
+            // Map the scroll percentage to a 360-degree rotation angle
+            const angle = scrollPercentage * 360; 
+            
+            // Apply the rotation to the 3D model around the Y-axis
+            modelViewer.cameraOrbit = `${angle}deg 75deg auto`;
+        });
+    </script>
 
 </body>
 </html>
