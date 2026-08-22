@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Audrey Dain | Engineering & Design Portfolio</title>
+    <title>Audrey Daines | Engineering & Design Portfolio</title>
     
-    <!-- Loads the 3D Model Viewer Tool from Google (FIXED) -->
+    <!-- Loads the 3D Model Viewer Tool from Google (FIXED LINK) -->
     <script type="module" src="https://googleapis.com"></script>
 
     <style>
@@ -45,17 +45,15 @@
         }
 
         /* 3D Model Container */
-                /* 3D Model Container */
         .model-container {
             flex: 1;
             min-width: 300px;
             height: 400px;
-            background-color: #1d3557; /* Changed from white gradient to blue */
+            background-color: #1d3557; 
             border-radius: 12px;
             box-shadow: 0 10px 20px rgba(0,0,0,0.05);
             overflow: hidden;
         }
-
         
         /* Adjusting the 3D canvas sizing */
         model-viewer {
@@ -106,24 +104,22 @@
             </div>
             
             <div class="model-container">
-                <!-- Diagnostic 3D Viewer Settings (FIXED) -->
-        <model-viewer id="scroll-model" 
-                src="https://github.com/audreydaines/audreydaines.github.io/raw/refs/heads/main/BiliSpectHat.glb" 
-                alt="A 3D model designed by me" 
-                camera-controls
-                bounds="tight"
-                camera-orbit="auto auto auto" 
-                field-of-view="auto"
-                environment-image="neutral" 
-                shadow-intensity="1"
-                disable-zoom
-                interaction-prompt="none"
-                loading="eager"
-                reveal="auto"
-                style="background-color: #1d3557; width: 100%; height: 100%;">
-        </model-viewer>
-
-
+                <!-- Raw Database URL Format (FIXED URL) -->
+                <model-viewer id="scroll-model" 
+                    src="https://githubusercontent.com" 
+                    alt="A 3D model designed by me" 
+                    camera-controls
+                    bounds="tight"
+                    camera-orbit="auto auto auto" 
+                    field-of-view="auto"
+                    environment-image="neutral" 
+                    shadow-intensity="1"
+                    disable-zoom
+                    interaction-prompt="none"
+                    loading="eager"
+                    reveal="auto"
+                    style="background-color: #1d3557; width: 100%; height: 100%;">
+                </model-viewer>
             </div>
         </div>
 
