@@ -1,10 +1,115 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>My First Website</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name | Engineering & Design Portfolio</title>
+    <style>
+        /* Modern Fonts & Styling */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            line-box: 1.6;
+        }
+        header {
+            background-color: #1a252f;
+            color: white;
+            text-align: center;
+            padding: 3rem 1rem;
+        }
+        header h1 { margin: 0; font-size: 2.5rem; }
+        header p { margin: 0.5rem 0 0; color: #3498db; font-weight: bold; }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        
+        /* Grid Layout for Projects */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .project-card {
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        .project-img {
+            background-color: #eceff1;
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #78909c;
+            font-weight: bold;
+        }
+        .project-info { padding: 1.5rem; }
+        .project-info h3 { margin-top: 0; color: #1a252f; }
+        .tag {
+            background-color: #e8f4fd;
+            color: #1d9bf0;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: #f8f9fa;
+            margin-top: 3rem;
+            font-size: 0.9rem;
+        }
+    </style>
 </head>
 <body>
-    <h1>Welcome to My Website!</h1>
-    <p>I built this website from scratch using GitHub Pages.</p>
+
+    <header>
+        <h1>Your Name</h1>
+        <p>Mechanical Engineer & Product Designer</p>
+    </header>
+
+    <div class="container">
+        <h2>About Me</h2>
+        <p>Hi, I am an engineer focused on blending technical performance with elegant physical design. I specialize in CAD modeling, prototyping, and systems engineering. Explore my recent work below.</p>
+
+        <h2>Featured Projects</h2>
+        <div class="project-grid">
+            
+            <!-- Project 1 -->
+            <div class="project-card">
+                <div class="project-img">[ Project Image Here ]</div>
+                <div class="project-info">
+                    <span class="tag">CAD / Robotics</span>
+                    <h3>Autonomous Rover Chassis</h3>
+                    <p>Designed a lightweight aluminum chassis optimized for stress distribution and internal electronics cooling.</p>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="project-card">
+                <div class="project-img">[ Project Image Here ]</div>
+                <div class="project-info">
+                    <span class="tag">Design / 3D Printing</span>
+                    <h3>Ergonomic Hand Tools</h3>
+                    <p>Conducted user research to 3D print and test high-friction resin handles, reducing user strain by 20%.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer>
+        <p>Contact: email@domain.com | <a href="#">LinkedIn</a></p>
+    </footer>
+
 </body>
 </html>
