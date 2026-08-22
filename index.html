@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name | Engineering & Design Portfolio</title>
+    <title>Audrey Daines | Engineering & Design Portfolio</title>
     
-    <!-- Loads the 3D Model Viewer Tool from Google -->
+    <!-- Loads the 3D Model Viewer Tool from Google (FIXED) -->
     <script type="module" src="https://googleapis.com"></script>
 
     <style>
@@ -54,18 +54,13 @@
             box-shadow: 0 10px 20px rgba(0,0,0,0.05);
             overflow: hidden;
         }
-        <model-viewer id="scroll-model" 
-            src="BiliSpectHat.glb" 
-            alt="A 3D model designed by me" 
-            camera-controls
-            camera-orbit="0deg 75deg 105%" 
-            field-of-view="auto"
-            environment-image="neutral" 
-            shadow-intensity="1"
-            style="background-color: #eaeaea; width: 100%; height: 100%;">
-        </model-viewer>
-
-
+        
+        /* Adjusting the 3D canvas sizing */
+        model-viewer {
+            width: 100%;
+            height: 100%;
+            outline: none;
+        }
         
         /* Project Grid */
         .project-grid {
@@ -109,13 +104,16 @@
             </div>
             
             <div class="model-container">
-                <!-- Change "my-robot-model.glb" to your exact filename -->
+                <!-- Diagnostic 3D Viewer Settings (FIXED) -->
                 <model-viewer id="scroll-model" 
                     src="BiliSpectHat.glb" 
                     alt="A 3D model designed by me" 
-                    camera-controls 
+                    camera-controls
+                    camera-orbit="0deg 75deg 105%" 
+                    field-of-view="auto"
+                    environment-image="neutral" 
+                    shadow-intensity="1"
                     disable-zoom
-                    auto-rotate-delay="0"
                     interaction-prompt="none">
                 </model-viewer>
             </div>
@@ -148,13 +146,8 @@
         const modelViewer = document.getElementById('scroll-model');
         
         window.addEventListener('scroll', () => {
-            // Calculates how far down the page you have scrolled
             const scrollPercentage = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
-            
-            // Map the scroll percentage to a 360-degree rotation angle
             const angle = scrollPercentage * 360; 
-            
-            // Apply the rotation to the 3D model around the Y-axis
             modelViewer.cameraOrbit = `${angle}deg 75deg auto`;
         });
     </script>
