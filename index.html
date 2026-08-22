@@ -54,11 +54,17 @@
             box-shadow: 0 10px 20px rgba(0,0,0,0.05);
             overflow: hidden;
         }
-        model-viewer {
-            width: 100%;
-            height: 100%;
-            outline: none;
-        }
+        <model-viewer id="scroll-model" 
+            src="BiliSpectHat.glb" 
+            alt="A 3D model designed by me" 
+            camera-controls 
+            disable-zoom
+            auto-rotate-delay="0"
+            interaction-prompt="none"
+            auto-rotate
+            style="background-color: #eee;">
+        </model-viewer>
+
         
         /* Project Grid */
         .project-grid {
