@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Audrey Daines | Engineering & Design Portfolio</title>
 
     <!-- Google Model Viewer -->
@@ -44,12 +45,13 @@
             padding: 2rem 1rem;
         }
 
+        /* About Me Section */
         .about-section {
             display: flex;
             align-items: center;
             gap: 2rem;
             margin: 3rem 0;
-            flex-wrap: wrap;
+            min-height: 500px;
         }
 
         .about-text {
@@ -57,16 +59,27 @@
             min-width: 300px;
         }
 
+        .about-text h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .about-text p {
+            line-height: 1.7;
+        }
+
+        /* 3D Model Container */
         .model-container {
             flex: 1;
             min-width: 300px;
             height: 400px;
             background-color: #1d3557;
             border-radius: 12px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
             overflow: hidden;
         }
 
+        /* 3D Model */
         model-viewer {
             width: 100%;
             height: 100%;
@@ -75,6 +88,7 @@
             background-color: #1d3557;
         }
 
+        /* Project Grid */
         .project-grid {
             display: grid;
             grid-template-columns: repeat(
@@ -90,13 +104,14 @@
             border: 1px solid #e0e0e0;
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
         }
 
         .project-info {
             padding: 1.5rem;
         }
 
+        /* Footer */
         footer {
             text-align: center;
             padding: 3rem;
@@ -104,22 +119,42 @@
             color: white;
             margin-top: 4rem;
         }
+
+        /* Mobile Layout */
+        @media (max-width: 700px) {
+            .about-section {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .model-container {
+                width: 100%;
+                height: 400px;
+            }
+
+            header h1 {
+                font-size: 2rem;
+            }
+        }
     </style>
 </head>
 
 <body>
 
+    <!-- Header -->
     <header>
         <h1>Audrey Daines</h1>
         <p>Biomedical Engineer & Product Designer</p>
     </header>
 
+
     <div class="container">
 
         <!-- About Me Section -->
-        <div class="about-section" id="about">
+        <section class="about-section" id="about">
 
             <div class="about-text">
+
                 <h2>About Me</h2>
 
                 <p>
@@ -135,56 +170,62 @@
                     Scroll down the page to watch it rotate, or click and
                     drag it to inspect my file layout.
                 </p>
+
             </div>
 
+
+            <!-- 3D Model -->
             <div class="model-container">
 
                 <model-viewer
                     id="scroll-model"
-
-                    <!-- REPLACE THIS WITH YOUR ACTUAL GLB FILE -->
-                    src="BiliSpectHat.glb"
-
+                    src="https://raw.githubusercontent.com/audreydaines/audreydaines.github.io/refs/heads/main/BiliSpectHat.glb"
                     alt="A 3D model designed by me"
-
                     camera-controls
                     disable-zoom
                     interaction-prompt="none"
-
                     camera-orbit="0deg 75deg 2.5m"
                     field-of-view="30deg"
-
                     environment-image="neutral"
                     shadow-intensity="1"
-
                     loading="eager"
                     reveal="auto">
                 </model-viewer>
 
             </div>
-        </div>
 
+        </section>
+
+
+        <!-- Featured Projects -->
         <h2>Featured Projects</h2>
 
         <div class="project-grid">
 
             <div class="project-card">
                 <div class="project-info">
+
                     <h3>Project Title One</h3>
+
                     <p>
                         Brief technical description of what you engineered,
                         materials used, and problems solved.
                     </p>
+
                 </div>
             </div>
 
+
             <div class="project-card">
                 <div class="project-info">
+
                     <h3>Project Title Two</h3>
+
                     <p>
                         Brief technical description of what you engineered,
                         materials used, and problems solved.
                     </p>
+
                 </div>
             </div>
 
@@ -192,12 +233,14 @@
 
     </div>
 
+
+    <!-- Footer -->
     <footer>
         <p>Contact: audreydaines@me.com</p>
     </footer>
 
 
-    <!-- Scroll Rotation -->
+    <!-- Scroll Rotation JavaScript -->
     <script>
 
         const modelViewer = document.getElementById("scroll-model");
@@ -209,18 +252,29 @@
 
             const windowHeight = window.innerHeight;
 
-            // Progress through the About Me section
+            /*
+             * Calculate how far the About Me section
+             * has moved through the viewport.
+             */
             const progress =
                 (windowHeight - rect.top) /
                 (windowHeight + rect.height);
 
-            // Clamp between 0 and 1
+            /*
+             * Keep the value between 0 and 1.
+             */
             const clampedProgress =
                 Math.max(0, Math.min(1, progress));
 
-            // Rotate the model 360 degrees
+            /*
+             * Convert scroll progress into
+             * a 360-degree rotation.
+             */
             const angle = clampedProgress * 360;
 
+            /*
+             * Update the model's camera position.
+             */
             modelViewer.cameraOrbit =
                 `${angle}deg 75deg 2.5m`;
 
