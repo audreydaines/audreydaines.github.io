@@ -6,7 +6,6 @@
 
     <title>Audrey Daines | Engineering & Design Portfolio</title>
 
-    <!-- Google Model Viewer -->
     <script type="module"
         src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.1.0/model-viewer.min.js">
     </script>
@@ -45,7 +44,6 @@
             padding: 2rem 1rem;
         }
 
-        /* About Me Section */
         .about-section {
             display: flex;
             align-items: center;
@@ -68,37 +66,23 @@
             line-height: 1.7;
         }
 
-        /* 3D Model Container */
         .model-container {
             flex: 1;
             min-width: 300px;
             height: 400px;
-
-            /* Completely transparent */
             background: transparent;
-
-            border-radius: 12px;
-
-            /* No box around the model */
-            box-shadow: none;
-
             overflow: hidden;
         }
 
-        /* 3D Model */
         model-viewer {
             width: 100%;
             height: 100%;
             display: block;
-            outline: none;
-
-            /* Transparent background */
             background-color: transparent;
-
             --poster-color: transparent;
+            outline: none;
         }
 
-        /* Project Grid */
         .project-grid {
             display: grid;
             grid-template-columns: repeat(
@@ -121,7 +105,6 @@
             padding: 1.5rem;
         }
 
-        /* Footer */
         footer {
             text-align: center;
             padding: 3rem;
@@ -130,7 +113,6 @@
             margin-top: 4rem;
         }
 
-        /* Mobile Layout */
         @media (max-width: 700px) {
 
             .about-section {
@@ -152,16 +134,13 @@
 
 <body>
 
-    <!-- Header -->
     <header>
         <h1>Audrey Daines</h1>
         <p>Biomedical Engineer & Product Designer</p>
     </header>
 
-
     <div class="container">
 
-        <!-- About Me Section -->
         <section class="about-section" id="about">
 
             <div class="about-text">
@@ -184,68 +163,48 @@
 
             </div>
 
-
-            <!-- 3D Model -->
             <div class="model-container">
 
                 <model-viewer
                     id="scroll-model"
                     src="https://raw.githubusercontent.com/audreydaines/audreydaines.github.io/refs/heads/main/BiliSpectHat.glb"
                     alt="A 3D model designed by me"
-
                     camera-controls
                     disable-zoom
                     interaction-prompt="none"
-
-                    <!-- Starting angle and zoom -->
-                    camera-orbit="35deg 75deg 4.5m"
-
-                    <!-- Camera field of view -->
-                    field-of-view="30deg"
-
-                    <!-- Model lighting -->
+                    camera-orbit="120deg 75deg 8m"
+                    camera-target="0m 0m 0m"
+                    field-of-view="35deg"
                     shadow-intensity="1"
-
-                    <!-- Loading -->
                     loading="eager"
                     reveal="auto">
-
                 </model-viewer>
 
             </div>
 
         </section>
 
-
-        <!-- Featured Projects -->
         <h2>Featured Projects</h2>
 
         <div class="project-grid">
 
             <div class="project-card">
                 <div class="project-info">
-
                     <h3>Project Title One</h3>
-
                     <p>
                         Brief technical description of what you engineered,
                         materials used, and problems solved.
                     </p>
-
                 </div>
             </div>
 
-
             <div class="project-card">
                 <div class="project-info">
-
                     <h3>Project Title Two</h3>
-
                     <p>
                         Brief technical description of what you engineered,
                         materials used, and problems solved.
                     </p>
-
                 </div>
             </div>
 
@@ -253,14 +212,10 @@
 
     </div>
 
-
-    <!-- Footer -->
     <footer>
         <p>Contact: audreydaines@me.com</p>
     </footer>
 
-
-    <!-- Scroll Rotation JavaScript -->
     <script>
 
         const modelViewer = document.getElementById("scroll-model");
@@ -269,34 +224,20 @@
         window.addEventListener("scroll", () => {
 
             const rect = aboutSection.getBoundingClientRect();
-
             const windowHeight = window.innerHeight;
 
-            /*
-             * Calculate how far the About Me section
-             * has moved through the viewport.
-             */
             const progress =
                 (windowHeight - rect.top) /
                 (windowHeight + rect.height);
 
-            /*
-             * Keep the value between 0 and 1.
-             */
             const clampedProgress =
                 Math.max(0, Math.min(1, progress));
 
-            /*
-             * Rotate the model through 360 degrees.
-             */
-            const angle = clampedProgress * 360;
+            const angle =
+                120 + (clampedProgress * 360);
 
-            /*
-             * Keep the camera elevation and distance
-             * constant while rotating horizontally.
-             */
             modelViewer.cameraOrbit =
-                `${angle + 35}deg 75deg 4.5m`;
+                `${angle}deg 75deg 8m`;
 
         });
 
