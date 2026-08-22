@@ -49,7 +49,7 @@
             align-items: center;
             gap: 2rem;
             margin: 3rem 0;
-            min-height: 500px;
+            min-height: 600px;
         }
 
         .about-text {
@@ -68,8 +68,8 @@
 
         .model-container {
             flex: 1;
-            min-width: 300px;
-            height: 400px;
+            min-width: 350px;
+            height: 500px;
             background: transparent;
             overflow: hidden;
         }
@@ -122,7 +122,7 @@
 
             .model-container {
                 width: 100%;
-                height: 400px;
+                height: 450px;
             }
 
             header h1 {
@@ -172,9 +172,9 @@
                     camera-controls
                     disable-zoom
                     interaction-prompt="none"
-                    camera-orbit="120deg 75deg 8m"
+                    camera-orbit="180deg 70deg 15m"
                     camera-target="0m 0m 0m"
-                    field-of-view="35deg"
+                    field-of-view="45deg"
                     shadow-intensity="1"
                     loading="eager"
                     reveal="auto">
@@ -234,10 +234,10 @@
                 Math.max(0, Math.min(1, progress));
 
             const angle =
-                120 + (clampedProgress * 360);
+                180 + (clampedProgress * 360);
 
             modelViewer.cameraOrbit =
-                `${angle}deg 75deg 8m`;
+                `${angle}deg 70deg 15m`;
 
         });
 
