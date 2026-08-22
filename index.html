@@ -172,9 +172,9 @@
                     camera-controls
                     disable-zoom
                     interaction-prompt="none"
-                    camera-orbit="90deg 100deg 100m"
-                    camera-target="0m 0m 0m"
-                    field-of-view="100deg"
+                    camera-orbit="90deg 75deg 160%"
+                    camera-target="auto auto auto"
+                    field-of-view="auto"
                     shadow-intensity="1"
                     loading="eager"
                     reveal="auto">
@@ -234,10 +234,10 @@
                 Math.max(0, Math.min(1, progress));
 
             const angle =
-                180 + (clampedProgress * 360);
+                90 + (clampedProgress * 360);
 
             modelViewer.cameraOrbit =
-                `${angle}deg 100deg 100m`;
+                `${angle}deg 75deg 160%`;
 
         });
 
