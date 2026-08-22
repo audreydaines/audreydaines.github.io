@@ -172,7 +172,7 @@
                     camera-controls
                     disable-zoom
                     interaction-prompt="none"
-                    camera-orbit="180deg 255deg 160%"
+                    camera-orbit="90deg 75deg 160%"
                     camera-target="auto auto auto"
                     field-of-view="auto"
                     shadow-intensity="1"
@@ -234,7 +234,7 @@
                 Math.max(0, Math.min(1, progress));
 
             const angle =
-                180 + (clampedProgress * 360);
+                90 + (clampedProgress * 360);
 
             modelViewer.cameraOrbit =
                 `${angle}deg 75deg 160%`;
