@@ -73,9 +73,15 @@
             flex: 1;
             min-width: 300px;
             height: 400px;
-            background-color: #1d3557;
+
+            /* Completely transparent */
+            background: transparent;
+
             border-radius: 12px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+
+            /* No box around the model */
+            box-shadow: none;
+
             overflow: hidden;
         }
 
@@ -85,7 +91,11 @@
             height: 100%;
             display: block;
             outline: none;
-            background-color: #1d3557;
+
+            /* Transparent background */
+            background-color: transparent;
+
+            --poster-color: transparent;
         }
 
         /* Project Grid */
@@ -122,6 +132,7 @@
 
         /* Mobile Layout */
         @media (max-width: 700px) {
+
             .about-section {
                 flex-direction: column;
                 align-items: stretch;
@@ -181,15 +192,24 @@
                     id="scroll-model"
                     src="https://raw.githubusercontent.com/audreydaines/audreydaines.github.io/refs/heads/main/BiliSpectHat.glb"
                     alt="A 3D model designed by me"
+
                     camera-controls
                     disable-zoom
                     interaction-prompt="none"
-                    camera-orbit="0deg 75deg 2.5m"
+
+                    <!-- Starting angle and zoom -->
+                    camera-orbit="35deg 75deg 4.5m"
+
+                    <!-- Camera field of view -->
                     field-of-view="30deg"
-                    environment-image="neutral"
+
+                    <!-- Model lighting -->
                     shadow-intensity="1"
+
+                    <!-- Loading -->
                     loading="eager"
                     reveal="auto">
+
                 </model-viewer>
 
             </div>
@@ -267,16 +287,16 @@
                 Math.max(0, Math.min(1, progress));
 
             /*
-             * Convert scroll progress into
-             * a 360-degree rotation.
+             * Rotate the model through 360 degrees.
              */
             const angle = clampedProgress * 360;
 
             /*
-             * Update the model's camera position.
+             * Keep the camera elevation and distance
+             * constant while rotating horizontally.
              */
             modelViewer.cameraOrbit =
-                `${angle}deg 75deg 2.5m`;
+                `${angle + 35}deg 75deg 4.5m`;
 
         });
 
